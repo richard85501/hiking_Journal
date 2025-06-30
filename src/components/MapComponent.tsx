@@ -1,9 +1,20 @@
 // components/MapComponent.js
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import { FC, useEffect } from "react";
-import { Trail } from "@/data/trail-markers";
+import { FC, Fragment, useEffect, useRef } from "react";
+import { Trail, trails } from "@/data/trail-markers";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { useFlyToStore } from "@/lib/useFlyToStore";
+import "leaflet-gpx";
+
+// 擴展 Leaflet 類型
+declare module "leaflet" {
+  class GPX extends L.FeatureGroup {
+    constructor(gpxUrl: string, options?: any);
+    on(event: string, handler: Function): this;
+    addTo(map: L.Map): this;
+  }
+}
 
 // 修復 Leaflet 預設圖示問題
 delete L.Icon.Default.prototype._getIconUrl;
@@ -16,11 +27,53 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
+// GPX 控制組件
+const GPXControl: FC<{ gpxUrl: string; gpxColor: string }> = ({
+  gpxUrl,
+  gpxColor,
+}) => {
+  const map = useMap();
+  const gpxLayerRef = useRef<L.GPX | null>(null);
+
+  useEffect(() => {
+    // 移除之前的 GPX 圖層
+    if (gpxLayerRef.current) {
+      map.removeLayer(gpxLayerRef.current);
+    }
+
+    // 創建新的 GPX 圖層
+    gpxLayerRef.current = new L.GPX(gpxUrl, {
+      async: true,
+      polyline_options: {
+        color: gpxColor,
+        weight: 4,
+        opacity: 0.7,
+      },
+    });
+
+    // 加載完成後自動調整視野
+    gpxLayerRef.current.on("loaded", function (e: any) {
+      map.fitBounds(e.target.getBounds());
+    });
+
+    // 添加到地圖
+    gpxLayerRef.current.addTo(map);
+
+    // 清理函數
+    return () => {
+      if (gpxLayerRef.current) {
+        map.removeLayer(gpxLayerRef.current);
+      }
+    };
+  }, [map, gpxUrl]);
+
+  return null;
+};
+
 interface MapComponentProps {
   center?: [number, number];
   zoom?: number;
   markers?: Trail[];
-  flyTo?: [number, number];
 }
 
 const FlyToControl: FC<{ flyTo?: [number, number] | null }> = ({ flyTo }) => {
@@ -39,8 +92,8 @@ const MapComponent: FC<MapComponentProps> = ({
   center = [25.033, 121.565],
   zoom = 13,
   markers = [],
-  flyTo,
 }) => {
+  const flyTo = useFlyToStore((state) => state.flyTo);
   return (
     <div className="w-full h-96 relative">
       <MapContainer
@@ -56,16 +109,25 @@ const MapComponent: FC<MapComponentProps> = ({
         />
 
         {/* 渲染標記點 */}
-        {markers.map((marker, index) => (
-          <Marker key={index} position={[marker.lat, marker.lng]}>
-            <Popup>
-              <div>
-                <h3 className="font-bold">{marker.title}</h3>
-                <p>{marker.description}</p>
-              </div>
-            </Popup>
-          </Marker>
+        {trails.map((item) => (
+          <Fragment key={item.lat + item.lng}>
+            {item.markers.map((marker, index) => (
+              <Marker key={index} position={marker.coordinates}>
+                <Popup>
+                  <div>
+                    <h3 className="font-bold">{item.title}</h3>
+                    <p>{marker.description}</p>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+            <GPXControl
+              gpxUrl={`./gpx/${item.gpxFile}`}
+              gpxColor={item.gpxColor}
+            />
+          </Fragment>
         ))}
+
         <FlyToControl flyTo={flyTo} />
       </MapContainer>
     </div>

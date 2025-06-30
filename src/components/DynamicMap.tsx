@@ -1,3 +1,5 @@
+"use client";
+
 // components/DynamicMap.js
 import dynamic from "next/dynamic";
 
