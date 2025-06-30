@@ -1,4 +1,6 @@
+import BackButton from "@/components/BackButton";
 import DynamicMap from "@/components/DynamicMap";
+import { trails } from "@/data/trail-markers";
 
 export default function TrailLayout({
   children,
@@ -8,6 +10,7 @@ export default function TrailLayout({
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-chang">
       <nav className="w-full p-4 flex items-center justify-center sticky top-0 z-10">
+        <BackButton />
         <h1 className="text-xl font-bold">Hiking Journal</h1>
       </nav>
 
@@ -22,7 +25,7 @@ export default function TrailLayout({
           <DynamicMap
             center={[24.383401, 121.231754]}
             zoom={15}
-            markers={/* 這邊可從 props 或 context 傳入 */}
+            markers={trails}
           />
         </div>
       </div>
