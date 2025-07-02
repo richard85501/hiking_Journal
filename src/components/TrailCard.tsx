@@ -43,7 +43,7 @@ export default function TrailCard({
         <div className="flex flex-col gap-4">
           {/* Level & Rating */}
           <div className="flex items-center justify-between">
-            <Link href={`/post/1`}>
+            <Link href={`/trail/1`}>
               <div className="font-bold text-2xl">{title}</div>
             </Link>
             <div className="flex items-center gap-2">

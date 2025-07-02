@@ -12,7 +12,7 @@ export default function TrailCardMetadata({
   descent: string;
 }) {
   return (
-    <div className="border-y border-dashed border-gray-300 py-4 flex flex-wrap gap-4">
+    <div className=" py-4 flex flex-wrap gap-4">
       <div className="flex items-center gap-2">
         <FiClock className="text-gray-500" />
         <span className="font-bold">{duration}</span>
