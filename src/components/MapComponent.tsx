@@ -3,18 +3,17 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { FC, useEffect, useRef } from "react";
 import { Trail } from "@/data/trail-markers";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import * as L from "leaflet";
 import { useFlyToStore } from "@/lib/useFlyToStore";
 import "leaflet-gpx";
 import { useGpxStore } from "@/lib/useGpxStore";
 import { LayerEvent } from "leaflet";
 
 // 擴展 Leaflet 類型
+// 擴展 Leaflet 類型
 declare module "leaflet" {
   class GPX extends L.FeatureGroup {
     constructor(gpxUrl: string, options?: Record<string, unknown>);
-    on(event: string, handler: (event: LeafletEvent) => void): this;
-    addTo(map: L.Map): this;
   }
 }
 
