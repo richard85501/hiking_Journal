@@ -1,12 +1,5 @@
-interface Marker {
-  coordinates: [number, number];
-  description: string;
-}
-
 interface Trail {
   coordinates: [number, number];
-  lat: number;
-  lng: number;
   title: string;
   description: string;
   imageSrc: string;
@@ -18,12 +11,9 @@ interface Trail {
   descent: string;
   gpxFile: string;
   gpxColor: string;
-  markers: Marker[];
 }
 const trails: Trail[] = [
   {
-    lat: 24.383401,
-    lng: 121.231754,
     coordinates: [24.383401, 121.231754],
     title: "【雪主東單攻】大地試睡員的會師之旅",
     description: "一路睡上去的單攻zzz",
@@ -36,16 +26,8 @@ const trails: Trail[] = [
     descent: "1800 m",
     gpxFile: "snow-day-hike.gpx",
     gpxColor: "green",
-    markers: [
-      {
-        coordinates: [24.383401, 121.231754],
-        description: "一路睡上去的單攻zzz",
-      },
-    ],
   },
   {
-    lat: 24.330751,
-    lng: 121.121182,
     title: "雪山西稜",
     description: "被箭竹林刷到哭出來",
     coordinates: [24.330751, 121.121182],
@@ -58,12 +40,6 @@ const trails: Trail[] = [
     descent: "4735 m",
     gpxFile: "snow-west-ridge.gpx",
     gpxColor: "red",
-    markers: [
-      {
-        coordinates: [24.330751, 121.121182],
-        description: "被箭竹林刷到哭出來",
-      },
-    ],
   },
 ];
 

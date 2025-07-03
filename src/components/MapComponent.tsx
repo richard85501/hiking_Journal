@@ -1,7 +1,7 @@
 // components/MapComponent.js
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import { FC, Fragment, useEffect, useRef } from "react";
-import { Trail, trails } from "@/data/trail-markers";
+import { FC, useEffect, useRef } from "react";
+import { Trail } from "@/data/trail-markers";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useFlyToStore } from "@/lib/useFlyToStore";
@@ -105,6 +105,7 @@ const MapComponent: FC<MapComponentProps> = ({
 }) => {
   const flyTo = useFlyToStore((state) => state.flyTo);
   const gpxList = useGpxStore((state) => state.gpxList);
+  const markerList = useGpxStore((state) => state.markerList);
 
   return (
     <div className="w-full h-96 relative">
@@ -121,19 +122,15 @@ const MapComponent: FC<MapComponentProps> = ({
         />
 
         {/* 渲染標記點 */}
-        {trails.map((item) => (
-          <Fragment key={item.lat + item.lng}>
-            {item.markers.map((marker, index) => (
-              <Marker key={index} position={marker.coordinates}>
-                <Popup>
-                  <div>
-                    <h3 className="font-bold">{item.title}</h3>
-                    <p>{marker.description}</p>
-                  </div>
-                </Popup>
-              </Marker>
-            ))}
-          </Fragment>
+        {markerList.map((item) => (
+          <Marker key={item.lat + item.description} position={item.coordinates}>
+            <Popup>
+              <div>
+                <h3 className="font-bold">{item.location}</h3>
+                <p>{item.description}</p>
+              </div>
+            </Popup>
+          </Marker>
         ))}
         {gpxList.map((item) => (
           <GPXControl

@@ -14,6 +14,7 @@ import { useEffect } from "react";
 export default function Home() {
   const setFlyTo = useFlyToStore((state) => state.setFlyTo);
   const setGpx = useGpxStore((state) => state.setGpxList);
+  const setMarkerList = useGpxStore((state) => state.setMarkerList);
 
   const flyToHandler: (coordinates: [number, number]) => void = (
     coordinates
@@ -26,7 +27,8 @@ export default function Home() {
       { gpxFile: "snow-day-hike.gpx", gpxColor: "green" },
       { gpxFile: "snow-west-ridge.gpx", gpxColor: "red" },
     ]);
-  }, [setGpx]);
+    setMarkerList([]);
+  }, [setGpx, setMarkerList]);
 
   return (
     <div className="w-full shadow-lg bg-white rounded-none mb-5 gap-2 h-auto">

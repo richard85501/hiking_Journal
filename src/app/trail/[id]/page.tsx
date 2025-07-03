@@ -14,6 +14,7 @@ import { useEffect } from "react";
 
 export default function Artical() {
   const setGpx = useGpxStore((state) => state.setGpxList);
+  const setMarkerList = useGpxStore((state) => state.setMarkerList);
 
   useEffect(() => {
     setGpx([
@@ -22,7 +23,19 @@ export default function Artical() {
         gpxColor: snow_day_hike_metadata.gpxColor,
       },
     ]);
-  }, [setGpx]);
+
+    const markers = snow_day_hike_content.map((item) => {
+      return {
+        coordinates: item.coordinates,
+        description: item.caption,
+        location: item.location,
+        lat: item.coordinates[0],
+        lng: item.coordinates[1],
+      };
+    });
+
+    setMarkerList(markers);
+  }, [setGpx, setMarkerList]);
 
   return (
     <div className="w-full shadow-2xl bg-white rounded-none mb-5 gap-2 h-auto">
