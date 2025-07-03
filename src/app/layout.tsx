@@ -25,6 +25,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const stops = [
+    "2:30 登山口",
+    "3:13 七卡",
+    "05:02 雪東",
+    "05:55 三六九營地",
+    "09:30 雪山主峰",
+  ];
   return (
     <html lang="en">
       <body
@@ -49,6 +56,17 @@ export default function RootLayout({
                 zoom={15}
                 markers={trails}
               />
+              <div className="flex flex-col gap-3 mx-auto pl-4 border-l-2 border-gray-400">
+                {stops.map((stop, idx) => (
+                  <div
+                    key={idx}
+                    className="relative pl-4 text-gray-700 font-medium"
+                  >
+                    <span className="absolute -left-2 top-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full"></span>
+                    {stop}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
