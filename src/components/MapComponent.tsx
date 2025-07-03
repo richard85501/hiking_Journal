@@ -12,7 +12,7 @@ import { useGpxStore } from "@/lib/useGpxStore";
 declare module "leaflet" {
   class GPX extends L.FeatureGroup {
     constructor(gpxUrl: string, options?: any);
-    on(event: string, handler: Function): this;
+    on(event: string, handler: (event: LeafletEvent) => void): this;
     addTo(map: L.Map): this;
   }
 }
