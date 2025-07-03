@@ -76,7 +76,7 @@ const GPXControl: FC<{ gpxUrl: string; gpxColor: string }> = ({
         map.removeLayer(gpxLayerRef.current);
       }
     };
-  }, [map, gpxUrl]);
+  }, [map, gpxUrl, gpxColor]);
 
   return null;
 };
