@@ -25,7 +25,7 @@ const trails: Trail[] = [
     lat: 24.383401,
     lng: 121.231754,
     coordinates: [24.383401, 121.231754],
-    title: "雪山主峰 - 單攻",
+    title: "【雪主東單攻】大地試睡員的會師之旅",
     description: "一路睡上去的單攻zzz",
     imageSrc: "/2025-07-snow-day-hike/title.jpg",
     rating: 4.8,
@@ -34,7 +34,7 @@ const trails: Trail[] = [
     distance: "22 km",
     ascent: "1800 m",
     descent: "1800 m",
-    gpxFile: "./na-huh.gpx",
+    gpxFile: "snow-day-hike.gpx",
     gpxColor: "green",
     markers: [
       {
@@ -56,7 +56,7 @@ const trails: Trail[] = [
     distance: "62 km",
     ascent: "5069 m",
     descent: "4735 m",
-    gpxFile: "./snow-west-ridge.gpx",
+    gpxFile: "snow-west-ridge.gpx",
     gpxColor: "red",
     markers: [
       {

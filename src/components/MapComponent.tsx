@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useFlyToStore } from "@/lib/useFlyToStore";
 import "leaflet-gpx";
+import { useGpxStore } from "@/lib/useGpxStore";
 
 // 擴展 Leaflet 類型
 declare module "leaflet" {
@@ -34,6 +35,16 @@ const GPXControl: FC<{ gpxUrl: string; gpxColor: string }> = ({
 }) => {
   const map = useMap();
   const gpxLayerRef = useRef<L.GPX | null>(null);
+
+  // map.on("click", function (e) {
+  //   const lat = e.latlng.lat;
+  //   const lng = e.latlng.lng;
+  //   alert(`你點的位置：${lat}, ${lng}`);
+
+  //   // 開啟 OSM 上該位置
+  //   // const osmUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=18/${lat}/${lng}`;
+  //   // window.open(osmUrl, "_blank");
+  // });
 
   useEffect(() => {
     // 移除之前的 GPX 圖層
@@ -91,9 +102,10 @@ const FlyToControl: FC<{ flyTo?: [number, number] | null }> = ({ flyTo }) => {
 const MapComponent: FC<MapComponentProps> = ({
   center = [25.033, 121.565],
   zoom = 13,
-  markers = [],
 }) => {
   const flyTo = useFlyToStore((state) => state.flyTo);
+  const gpxList = useGpxStore((state) => state.gpxList);
+
   return (
     <div className="w-full h-96 relative">
       <MapContainer
@@ -121,11 +133,14 @@ const MapComponent: FC<MapComponentProps> = ({
                 </Popup>
               </Marker>
             ))}
-            <GPXControl
-              gpxUrl={`./gpx/${item.gpxFile}`}
-              gpxColor={item.gpxColor}
-            />
           </Fragment>
+        ))}
+        {gpxList.map((item) => (
+          <GPXControl
+            key={item.gpxFile}
+            gpxUrl={`/gpx/${item.gpxFile}`}
+            gpxColor={item.gpxColor}
+          />
         ))}
 
         <FlyToControl flyTo={flyTo} />

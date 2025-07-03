@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gpx creator="fabulator:gpx-builder" version="1.1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
-  <wpt lat="24.3854313" lon="121.2990604">
+  <!-- <wpt lat="24.3854313" lon="121.2990604">
     <ele>2135</ele>
     <name>雪山登山口</name>
   </wpt>
@@ -51,7 +51,7 @@
   <wpt lat="24.3854313" lon="121.2990604">
     <ele>2135</ele>
     <name>雪山登山口</name>
-  </wpt>
+  </wpt> -->
   <trk>
     <trkseg>
       <trkpt lat="24.3854313" lon="121.2990604"></trkpt>
