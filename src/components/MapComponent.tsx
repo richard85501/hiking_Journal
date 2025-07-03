@@ -16,9 +16,12 @@ declare module "leaflet" {
     constructor(gpxUrl: string, options?: Record<string, unknown>);
   }
 }
+interface PatchedDefaultIcon extends L.Icon.Default {
+  _getIconUrl?: () => string;
+}
+// 讓 TypeScript 知道 prototype 有這個東西
+delete (L.Icon.Default.prototype as PatchedDefaultIcon)._getIconUrl;
 
-// 修復 Leaflet 預設圖示問題
-delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
