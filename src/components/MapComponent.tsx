@@ -7,11 +7,12 @@ import L from "leaflet";
 import { useFlyToStore } from "@/lib/useFlyToStore";
 import "leaflet-gpx";
 import { useGpxStore } from "@/lib/useGpxStore";
+import { LayerEvent } from "leaflet";
 
 // 擴展 Leaflet 類型
 declare module "leaflet" {
   class GPX extends L.FeatureGroup {
-    constructor(gpxUrl: string, options?: any);
+    constructor(gpxUrl: string, options?: Record<string, unknown>);
     on(event: string, handler: (event: LeafletEvent) => void): this;
     addTo(map: L.Map): this;
   }
@@ -63,7 +64,7 @@ const GPXControl: FC<{ gpxUrl: string; gpxColor: string }> = ({
     });
 
     // 加載完成後自動調整視野
-    gpxLayerRef.current.on("loaded", function (e: any) {
+    gpxLayerRef.current.on("loaded", function (e: LayerEvent) {
       map.fitBounds(e.target.getBounds());
     });
 
