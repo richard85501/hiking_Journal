@@ -1,8 +1,8 @@
 import "./globals.css";
-import BackButton from "@/components/BackButton";
 import DynamicMap from "@/components/DynamicMap";
 import { trails } from "@/data/trail-markers";
 import { Itinerary } from "@/components/Itinerary";
+import Navbar from "@/components/NavBar";
 
 export default function RootLayout({
   children,
@@ -30,11 +30,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <div className="flex flex-col h-screen overflow-hidden bg-chang">
-          <nav className="w-full p-4 flex items-center justify-center sticky top-0 z-10">
-            <BackButton />
-            <h1 className="text-xl font-bold">CHANG CHANG Hiking Journal</h1>
-          </nav>
-
+          <Navbar />
           <div className="flex flex-col md:flex-row flex-grow overflow-hidden">
             {/* 左邊：會換的內容 */}
             <div className="w-full md:basis-[60%] max-w-3xl overflow-y-auto p-6 pt-0 mx-auto">
