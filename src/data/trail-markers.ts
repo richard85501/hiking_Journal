@@ -15,7 +15,7 @@ interface Trail {
 const trails: Trail[] = [
   {
     coordinates: [24.383401, 121.231754],
-    title: "【雪主東單攻】大地試睡員的會師之旅",
+    title: "【雪主東單攻】大地試睡員的偽會師之旅",
     description: "一路睡上去的單攻zzz",
     imageSrc: "/2025-07-snow-day-hike/title.jpg",
     rating: 4.8,

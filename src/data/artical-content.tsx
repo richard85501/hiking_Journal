@@ -120,7 +120,7 @@ export const snow_day_hike_content: content[] = [
     src: "/2025-07-snow-day-hike/13.jpg",
     alt: "這是一張圖片",
     caption:
-      "一下都屌虐我1個小時的柏廷這次有點走不動，可能是因為早上兩個饅頭有點太少了，提供不了他需要的養分。",
+      "一下都可以虐我1小時的柏廷這次有點走不動，可能是因為早上兩個饅頭有點太少了，養分不夠。",
     layout: "fixed",
     coordinates: [24.38406878580517, 121.23428574751074],
     location: "圈谷中間",
@@ -155,7 +155,7 @@ export const snow_day_hike_content: content[] = [
     src: "/2025-07-snow-day-hike/17.jpg",
     alt: "這是一張圖片",
     caption:
-      "吸了兩果膠的柏廷下山跑得飛快，讓我們免費上了一堂越野間歇課，沒想到下山比上山還喘。",
+      "吸了兩果膠的柏廷下山跑得飛快，幫我們免費上了一堂越野間歇課，沒想到下山比上山還喘。",
     layout: "fixed",
     coordinates: [24.384420570392287, 121.23498380184175],
     location: "圈谷中間",
