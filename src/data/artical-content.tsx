@@ -37,7 +37,7 @@ export type articalContentEvent = {
 export const artical_metadata: articalMetadataEvent[] = [
   {
     id: 1,
-    title: "【雪主東單攻】大地試睡員的會師之旅",
+    title: "【雪主東單攻】把雪山當成IKEA的床到處躺",
     date: "June 15 2025",
     level: "Intermediate",
     rating: 3,
