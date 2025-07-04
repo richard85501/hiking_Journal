@@ -116,7 +116,6 @@ const MapComponent: FC<MapComponentProps> = ({
         center={center}
         zoom={zoom}
         style={{ height: "100%", width: "100%" }}
-        className="rounded-lg"
       >
         {/* OpenStreetMap 圖層 */}
         <TileLayer

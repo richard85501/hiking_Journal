@@ -20,6 +20,9 @@ export default function RootLayout({
     "05:02 雪東",
     "05:55 三六九營地",
     "09:30 雪山主峰",
+    "10:30 三六九營地",
+    "11:37 雪山東峰",
+    "13:05 登山口",
   ];
   return (
     <html lang="en">
@@ -32,24 +35,23 @@ export default function RootLayout({
 
           <div className="flex flex-col md:flex-row flex-grow overflow-hidden">
             {/* 左邊：會換的內容 */}
-            <div className="w-full md:basis-[60%] max-w-3xl overflow-y-auto p-6 mx-auto">
+            <div className="w-full md:basis-[60%] max-w-3xl overflow-y-auto p-6 pt-0 mx-auto">
               {children}
             </div>
 
             {/* 右邊：永遠存在，不會重刷 */}
-            <div className="hidden md:block basis-[40%] p-6 sticky top-0 h-screen">
+            <div className="hidden md:block basis-[40%] sticky top-0 h-screen">
               <DynamicMap
                 center={[24.383401, 121.231754]}
                 zoom={15}
                 markers={trails}
               />
-              <div className="flex flex-col gap-3 mx-auto pl-4 border-l-2 border-gray-400">
+              <div className="mt-5">
                 {stops.map((stop, idx) => (
                   <div
                     key={idx}
-                    className="relative pl-4 text-gray-700 font-medium"
+                    className="relative p-2 m-1 font-medium bg-black text-white rounded-md text-sm w-fit"
                   >
-                    <span className="absolute -left-2 top-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full"></span>
                     {stop}
                   </div>
                 ))}

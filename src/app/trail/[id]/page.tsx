@@ -81,7 +81,7 @@ export default function Artical() {
           descent="1800 m"
         />
         <p className="text-gray-600 text-md mb-2">
-          小小荒謬的爬山，本來以為是一場可以看到很多老朋友的場合，結果到山腳才發現山社六路會師已經倒團，就剩下我們了，不過都在山腳下了，那就出發嚕！不出發也不對，所幸大家實力堅強，天氣也很好，快快樂樂的爬完了。（不過就從頭睡到尾就是了）
+          {snow_day_hike_metadata.excerpt}
         </p>
         <Gallery items={snow_day_hike_content} />;
       </div>

@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 const DynamicMap = dynamic(() => import("./MapComponent"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
+    <div className="w-full h-96 bg-gray-200 flex items-center justify-center">
       <div className="text-gray-500">載入地圖中...</div>
     </div>
   ),
