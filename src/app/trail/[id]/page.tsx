@@ -38,7 +38,7 @@ export default function Artical() {
     ) as articalContentEvent;
     setMeta(meta);
     setContent(content);
-    setRecord(meta.record);
+    setRecord(meta?.record);
     if (meta?.gpxFile) {
       setGpx([
         {

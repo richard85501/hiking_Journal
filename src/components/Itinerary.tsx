@@ -4,6 +4,11 @@ import { useRecordStore } from "@/lib/useRecordStore";
 
 export const Itinerary = () => {
   const record = useRecordStore((state) => state.record);
+
+  if (!record) {
+    return null;
+  }
+
   return (
     <div className="overflow-scroll">
       <div className="mt-5 overflow-y-auto h-96">

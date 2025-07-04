@@ -11,6 +11,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="description" content="我的一些小小記錄。" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="Chang's hiking journal" />
+        <meta property="og:description" content="hiking website。" />
+        <meta
+          property="og:image"
+          content="hiking-journal.vercel.app/meta_image.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://hiking-journal.vercel.app
+"
+        />
+        <meta property="og:type" content="website" />
+        <title>CHANG CHANG Hiking Journal</title>
+      </head>
       <body className="antialiased">
         <div className="flex flex-col h-screen overflow-hidden bg-chang">
           <nav className="w-full p-4 flex items-center justify-center sticky top-0 z-10">
