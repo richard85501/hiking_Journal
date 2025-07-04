@@ -7,7 +7,7 @@ type gpxContent = {
 
 type markerProps = {
   coordinates: [number, number];
-  description: string;
+  caption: string;
   lat: number;
   lng: number;
   location: string;

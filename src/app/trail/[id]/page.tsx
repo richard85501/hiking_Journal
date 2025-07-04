@@ -3,87 +3,122 @@
 import TrailCardMetadata from "@/components/TrailCardMetadata";
 import Image from "next/image";
 import Gallery from "../../../components/Gallery";
-import {
-  snow_day_hike_metadata,
-  snow_day_hike_content,
+import { artical_metadata, artical_content } from "@/data/artical-content";
+import type {
+  articalMetadataEvent,
+  articalContentEvent,
 } from "@/data/artical-content";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
 import { useGpxStore } from "@/lib/useGpxStore";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { redirect, useParams } from "next/navigation";
+import { useRecordStore } from "@/lib/useRecordStore";
 
 export default function Artical() {
+  const { id } = useParams();
+
+  if (!id) {
+    redirect("/");
+  }
+
+  const [meta, setMeta] = useState({} as articalMetadataEvent);
+  const [content, setContent] = useState({} as articalContentEvent);
+  const [loading, setLoading] = useState(true);
   const setGpx = useGpxStore((state) => state.setGpxList);
   const setMarkerList = useGpxStore((state) => state.setMarkerList);
+  const setRecord = useRecordStore((state) => state.setRecord);
 
   useEffect(() => {
-    setGpx([
-      {
-        gpxFile: snow_day_hike_metadata.gpxFile,
-        gpxColor: snow_day_hike_metadata.gpxColor,
-      },
-    ]);
+    const meta = artical_metadata.find(
+      (item) => item.id === +id
+    ) as articalMetadataEvent;
+    const content = artical_content.find(
+      (item) => item.id === +id
+    ) as articalContentEvent;
+    setMeta(meta);
+    setContent(content);
+    setRecord(meta.record);
+    if (meta?.gpxFile) {
+      setGpx([
+        {
+          gpxFile: meta.gpxFile,
+          gpxColor: meta.gpxColor,
+        },
+      ]);
 
-    const markers = snow_day_hike_content.map((item) => {
-      return {
-        coordinates: item.coordinates,
-        description: item.caption,
-        location: item.location,
-        lat: item.coordinates[0],
-        lng: item.coordinates[1],
-      };
-    });
+      const markers = content.content.map((item) => {
+        return {
+          coordinates: item.coordinates,
+          caption: item.caption,
+          location: item.location,
+          lat: item.coordinates[0],
+          lng: item.coordinates[1],
+        };
+      });
 
-    setMarkerList(markers);
-  }, [setGpx, setMarkerList]);
+      setMarkerList(markers);
+    }
+    setLoading(false);
+  }, [
+    setGpx,
+    setMarkerList,
+    setRecord,
+    meta?.gpxColor,
+    meta?.gpxFile,
+    content?.content,
+    id,
+  ]);
+
+  if (loading) {
+    return (
+      <main className="p-10 text-gray-500">
+        <h1 className="text-xl">Loading Trail...</h1>
+      </main>
+    );
+  }
+
+  if (!meta?.title) {
+    redirect("/");
+  }
 
   return (
     <div className="w-full shadow-2xl bg-white rounded-none mb-5 gap-2 h-auto">
       <div className="relative w-full h-80 aspect-[3/2]">
         <Image
-          src={snow_day_hike_metadata.banner}
+          src={meta.banner}
           fill
           alt={"banner"}
           style={{ objectFit: "cover" }}
+          priority
         />
       </div>
 
       <div className="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
           <div className="text-sm font-semibold bg-black text-white px-2 py-1 rounded">
-            {snow_day_hike_metadata.level}
+            {meta.level}
           </div>
 
           <div className="flex items-center gap-2 text-yellow-500">
             <FaStar />
-            <span className="font-bold">{snow_day_hike_metadata.rating}</span>
-            <span className="text-gray-500">
-              ({snow_day_hike_metadata.reviews})
-            </span>
+            <span className="font-bold">{meta.rating}</span>
             <div className="flex items-center gap-1 ml-4">
               <BsFillPeopleFill />
-              <span className="text-gray-700">
-                {snow_day_hike_metadata.participants}
-              </span>
+              <span className="text-yellow-500">{meta.participants}</span>
             </div>
           </div>
         </div>
-        <h1 className="text-2xl font-bold mb-2">
-          {snow_day_hike_metadata.title}
-        </h1>
-        <div className="text-sm text-gray-500 mb-2">
-          {snow_day_hike_metadata.date}
-        </div>
+        <h1 className="text-2xl font-bold mb-2">{meta.title}</h1>
+        <div className="text-sm text-gray-500 mb-2">{meta.date}</div>
         <TrailCardMetadata
           duration="11:00"
           distance="22 km"
           ascent="1800 m"
           descent="1800 m"
         />
-        <p className="text-gray-600 text-md mb-2">
-          {snow_day_hike_metadata.excerpt}
-        </p>
-        <Gallery items={snow_day_hike_content} />;
+        <p className="text-gray-600 text-md mb-2">{meta.excerpt}</p>
+        <Gallery items={content.content} />
       </div>
     </div>
   );

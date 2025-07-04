@@ -3,12 +3,13 @@
 import AspectImageBlock from "@/components/articalBlock/AspectImageBlock";
 import FixedImageBlock from "@/components/articalBlock/FixedImageBlock";
 import { useFlyToStore } from "@/lib/useFlyToStore";
+import ComingSoonBlock from "./articalBlock/ComingSoonBlock";
 
 export interface GalleryItem {
   src: string;
   alt: string;
   caption: string;
-  layout: "aspect" | "fixed";
+  layout: string;
   coordinates: [number, number];
 }
 
@@ -51,8 +52,8 @@ export default function Gallery({ items }: GalleryProps) {
             />
           );
         } else {
-          // 以防以後有未知值
-          return null;
+          // 如果未指定或未知，就顯示 ComingSoonBlock
+          return <ComingSoonBlock key={index} />;
         }
       })}
     </div>

@@ -2,23 +2,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { BsFillPeopleFill } from "react-icons/bs";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 interface TrailCardProps {
+  id: number;
   imageSrc: string;
   title: string;
-  rating: number;
-  ratingCount: number;
+  participants: number;
   description: string;
   flyTo: () => void;
   children: ReactNode;
 }
 
 export default function TrailCard({
+  id,
   imageSrc,
   title,
-  rating,
-  ratingCount,
+  participants,
   description,
   flyTo,
   children,
@@ -43,13 +44,14 @@ export default function TrailCard({
         <div className="flex flex-col gap-4">
           {/* Level & Rating */}
           <div className="flex items-center justify-between">
-            <Link href={`/trail/1`}>
+            <Link href={`/trail/${id}`}>
               <div className="font-bold text-2xl">{title}</div>
             </Link>
-            <div className="flex items-center gap-2">
-              <div>⭐</div>
-              <div>{rating.toFixed(1)}</div>
-              <div>({ratingCount})</div>
+            <div className="flex items-center gap-2 text-yellow-500">
+              <div className="flex items-center gap-1 ml-4">
+                <BsFillPeopleFill />
+                <span className="text-yellow-500">{participants}</span>
+              </div>
             </div>
           </div>
           {children}

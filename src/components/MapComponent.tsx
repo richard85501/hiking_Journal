@@ -122,14 +122,16 @@ const MapComponent: FC<MapComponentProps> = ({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
         {/* 渲染標記點 */}
         {markerList.map((item) => (
-          <Marker key={item.lat + item.description} position={item.coordinates}>
+          <Marker
+            key={`${item.lat}${item.caption}`}
+            position={item.coordinates}
+          >
             <Popup>
               <div>
                 <h3 className="font-bold">{item.location}</h3>
-                <p>{item.description}</p>
+                <p>{item.caption}</p>
               </div>
             </Popup>
           </Marker>
