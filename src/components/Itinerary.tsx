@@ -15,7 +15,7 @@ export const Itinerary = () => {
         {record.map((log, idx) => (
           <div
             key={idx}
-            className="p-2 m-1 font-medium bg-black text-white rounded-md text-sm w-fit"
+            className="p-2 m-1 font-medium bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-md text-sm w-fit"
           >
             {log}
           </div>

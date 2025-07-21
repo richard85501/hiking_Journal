@@ -1,6 +1,7 @@
 "use client";
 
 import BackButton from "./BackButton";
+import ThemeToggle from "./ThemeToggle";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -14,6 +15,9 @@ export default function Navbar() {
         </div>
       )}
       <h1 className="text-xl font-bold">CHANG CHANG Hiking Journal</h1>
+      <div className="absolute right-4">
+        <ThemeToggle />
+      </div>
     </nav>
   );
 }

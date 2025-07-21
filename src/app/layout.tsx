@@ -10,7 +10,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <meta name="description" content="我的一些小小記錄。" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@ export default function RootLayout({
         <title>CHANG CHANG Hiking Journal</title>
       </head>
       <body className="antialiased">
-        <div className="flex flex-col h-screen overflow-hidden bg-chang">
+        <div className="flex flex-col h-screen overflow-hidden bg-white dark:bg-black">
           <Navbar />
           <div className="flex flex-col md:flex-row flex-grow overflow-hidden">
             {/* 左邊：會換的內容 */}

@@ -12,21 +12,21 @@ export default function TrailCardMetadata({
   descent: string;
 }) {
   return (
-    <div className=" py-4 flex flex-wrap gap-4">
+    <div className=" py-4 flex flex-wrap gap-4 text-gray-800 dark:text-white">
       <div className="flex items-center gap-2">
-        <FiClock className="text-gray-500" />
+        <FiClock className="text-gray-500 dark:text-white" />
         <span className="font-bold">{duration}</span>
       </div>
-      <div className="flex items-center gap-2">
-        <FiMap className="text-gray-500" />
+      <div className="flex items-center gap-2 ">
+        <FiMap className="text-gray-500 dark:text-white" />
         <span className="font-bold">{distance}</span>
       </div>
-      <div className="flex items-center gap-2">
-        <FiArrowUp className="text-gray-500" />
+      <div className="flex items-center gap-2 ">
+        <FiArrowUp className="text-gray-500 dark:text-white" />
         <span className="font-bold">{ascent}</span>
       </div>
-      <div className="flex items-center gap-2">
-        <FiArrowDown className="text-gray-500" />
+      <div className="flex items-center gap-2 ">
+        <FiArrowDown className="text-gray-500 dark:text-white" />
         <span className="font-bold">{descent}</span>
       </div>
     </div>

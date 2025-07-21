@@ -72,7 +72,7 @@ export default function Artical() {
 
   if (loading) {
     return (
-      <main className="p-10 text-gray-500">
+      <main className="p-10 text-gray-500 dark:text-gray-400">
         <h1 className="text-xl">Loading Trail...</h1>
       </main>
     );
@@ -83,7 +83,7 @@ export default function Artical() {
   }
 
   return (
-    <div className="w-full shadow-2xl bg-white rounded-none mb-5 gap-2 h-auto">
+    <div className="w-full shadow-2xl bg-white  dark:bg-gray-800 rounded-none mb-5 gap-2 h-auto">
       <div className="relative w-full h-80 aspect-[3/2]">
         <Image
           src={meta.banner}
@@ -117,7 +117,9 @@ export default function Artical() {
           ascent="1800 m"
           descent="1800 m"
         />
-        <p className="text-gray-600 text-md mb-2">{meta.excerpt}</p>
+        <p className="text-gray-600 text-md mb-2 dark:text-white">
+          {meta.excerpt}
+        </p>
         <Gallery items={content.content} />
       </div>
     </div>

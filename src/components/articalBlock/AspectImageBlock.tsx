@@ -26,13 +26,15 @@ export default function AspectImageBlock({
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
         <button
-          className="absolute bottom-4 right-4 p-2 bg-white/80 rounded-full shadow-md hover:bg-white transition"
+          className="absolute bottom-4 right-4 p-2 bg-white/80 dark:bg-gray-700/80 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition"
           onClick={() => flyTo(coordinates)}
         >
-          <FaMapMarkerAlt className="w-5 h-5 text-gray-800" />
+          <FaMapMarkerAlt className="w-5 h-5 text-gray-800 dark:text-gray-200" />
         </button>
       </div>
-      <p className="text-gray-600 text-md mt-2 text-center">{caption}</p>
+      <p className="text-gray-600 dark:text-white text-md mt-2 text-center">
+        {caption}
+      </p>
     </div>
   );
 }

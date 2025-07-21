@@ -7,7 +7,7 @@ export default function BackButton() {
   return (
     <button
       onClick={() => redirect("/")}
-      className="inline-flex items-center gap-2 pr-2 text-black rounded-full hover:bg-green-50 hover:text-white  transition-colors"
+      className="w-8 h-8 flex items-center justify-center rounded-full bg-transparent text-black hover:bg-black hover:text-white transition-colors dark:text-white hover:dark:text-gray-800 hover:dark:bg-white"
     >
       <FiArrowLeft className="text-xl" />
     </button>

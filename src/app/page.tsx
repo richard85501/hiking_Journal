@@ -30,7 +30,7 @@ export default function Home() {
   }, [setGpx, setMarkerList, setRecord]);
 
   return (
-    <div className="w-full shadow-lg bg-white rounded-none mb-5 gap-2 h-auto">
+    <div className="w-full shadow-lg rounded-none mb-5 gap-2 h-auto">
       {trails.map((trail, index) => (
         <TrailCard
           key={index}

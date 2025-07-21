@@ -25,17 +25,17 @@ export default function TrailCard({
   children,
 }: TrailCardProps) {
   return (
-    <div className="w-full shadow-2xl bg-white rounded-none mb-5 gap-2">
+    <div className="w-full shadow-2xl bg-white dark:bg-gray-800 rounded-none mb-5 gap-2">
       {/* 圖片容器 */}
       <div className="relative w-full aspect-[3/2]">
         <Image src={imageSrc} fill alt={title} style={{ objectFit: "cover" }} />
 
         {/* 右下角按鈕 */}
         <button
-          className="absolute bottom-4 right-4 p-2 bg-white/80 rounded-full shadow-md hover:bg-white transition"
+          className="absolute bottom-4 right-4 p-2 bg-white/80 dark:bg-gray-700/80 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition"
           onClick={flyTo}
         >
-          <FaMapMarkerAlt className="w-5 h-5 text-gray-800" />
+          <FaMapMarkerAlt className="w-5 h-5 text-gray-800 dark:text-gray-200" />
         </button>
       </div>
 
@@ -56,7 +56,7 @@ export default function TrailCard({
           </div>
           {children}
           {/* Description */}
-          <div className="text-sm text-gray-600">{description}</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">{description}</div>
         </div>
       </div>
     </div>
