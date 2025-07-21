@@ -95,12 +95,12 @@ export default function Artical() {
       </div>
 
       <div className="p-4 sm:p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-          <div className="text-sm font-semibold bg-black text-white px-2 py-1 rounded">
+        <div className="flex flex-row justify-between gap-2 mb-4">
+          <div className="text-sm font-semibold bg-black text-white px-2 py-1 rounded w-fit">
             {meta.level}
           </div>
 
-          <div className="flex items-center gap-2 text-yellow-500">
+          <div className="flex items-center gap-2 text-yellow-500 flex-wrap sm:flex-nowrap">
             <FaStar />
             <span className="font-bold">{meta.rating}</span>
             <div className="flex items-center gap-1 ml-4">
