@@ -44,9 +44,3 @@
     font-size: clamp(1rem, 2.5vw, 2rem);
   }
 }
-.test-working {
-  font-size: 20px;
-  padding: 10px;
-  color: white;
-  background: red;
-}
