@@ -11,7 +11,7 @@ import type {
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
 import { useGpxStore } from "@/lib/useGpxStore";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { redirect, useParams } from "next/navigation";
 import { useRecordStore } from "@/lib/useRecordStore";
 
@@ -70,6 +70,10 @@ export default function Artical() {
     id,
   ]);
 
+  const metadata = useMemo(() => {
+    return artical_metadata.find((item) => item.id === +id);
+  }, [id]);
+
   if (loading) {
     return (
       <main className="p-10 text-gray-500 dark:text-gray-400">
@@ -83,7 +87,7 @@ export default function Artical() {
   }
 
   return (
-    <div className="w-full shadow-2xl bg-white  dark:bg-gray-800 rounded-none mb-5 gap-2 h-auto">
+    <div className="w-full bg-white shadow-xl dark:bg-gray-800 rounded-none mb-5 gap-2 h-auto">
       <div className="relative w-full h-80 aspect-[3/2]">
         <Image
           src={meta.banner}
@@ -112,10 +116,10 @@ export default function Artical() {
         <h1 className="text-2xl font-bold mb-2">{meta.title}</h1>
         <div className="text-sm text-gray-500 mb-2">{meta.date}</div>
         <TrailCardMetadata
-          duration="11:00"
-          distance="22 km"
-          ascent="1800 m"
-          descent="1800 m"
+          duration={metadata?.duration || "N/A"}
+          distance={metadata?.distance || "N/A"}
+          ascent={metadata?.ascent || "N/A"}
+          descent={metadata?.descent || "N/A"}
         />
         <p className="text-gray-600 text-md mb-2 dark:text-white">
           {meta.excerpt}

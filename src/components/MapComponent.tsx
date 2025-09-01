@@ -1,7 +1,6 @@
 // components/MapComponent.js
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { FC, useEffect, useRef } from "react";
-import { Trail } from "@/data/trail-markers";
 import "leaflet/dist/leaflet.css";
 import * as L from "leaflet";
 import { useFlyToStore } from "@/lib/useFlyToStore";
@@ -87,7 +86,6 @@ const GPXControl: FC<{ gpxUrl: string; gpxColor: string }> = ({
 interface MapComponentProps {
   center?: [number, number];
   zoom?: number;
-  markers?: Trail[];
 }
 
 const FlyToControl: FC<{ flyTo?: [number, number] | null }> = ({ flyTo }) => {

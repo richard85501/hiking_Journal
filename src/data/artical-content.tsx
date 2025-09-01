@@ -7,22 +7,21 @@ type content = {
   location: string;
 };
 
-type Trail = {
-  duration: string;
-  distance: string;
-  ascent: string;
-  descent: string;
-};
-
 export type articalMetadataEvent = {
   id: number;
   title: string;
+  coordinates: [number, number];
+  description: string;
+  imageSrc: string;
   date: string;
   level: string;
   rating: number;
   participants: number;
   banner: string;
-  trail: Trail;
+  duration: string;
+  distance: string;
+  ascent: string;
+  descent: string;
   excerpt: string;
   gpxFile: string;
   gpxColor: string;
@@ -37,18 +36,19 @@ export type articalContentEvent = {
 export const artical_metadata: articalMetadataEvent[] = [
   {
     id: 1,
-    title: "【雪主東單攻】把雪山當成IKEA的床到處躺",
+    coordinates: [24.383401, 121.231754],
+    description: "一路睡上去的單攻zzz",
+    imageSrc: "/2025-07-snow-day-hike/title.jpg",
+    duration: "11:00",
+    distance: "22 km",
+    ascent: "1800 m",
+    descent: "1800 m",
+    title: "【雪主東單攻】多年前的組合再次出發",
     date: "June 15 2025",
     level: "Intermediate",
     rating: 3,
     participants: 4,
     banner: "/2025-07-snow-day-hike/title.jpg",
-    trail: {
-      duration: "11:00",
-      distance: "22 km",
-      ascent: "1800 m",
-      descent: "1800 m",
-    },
     excerpt:
       "小小荒謬的爬山，本來以為是一場可以看到很多老朋友的場合，結果到山腳才發現山社六路會師已經倒團，就剩下我們了，不過都在山腳下了，那就出發嚕！不出發也不對，所幸大家實力堅強，天氣也很好，快快樂樂的爬完了。（不過就從頭睡到尾就是了）",
     gpxFile: "snow-day-hike.gpx",
@@ -67,17 +67,18 @@ export const artical_metadata: articalMetadataEvent[] = [
   {
     id: 2,
     title: "【雪主西稜】先苦後甘再苦的游泳之旅",
+    description: "你喜歡濕淋淋的箭竹林嗎? 如果喜歡就出發吧!",
+    coordinates: [24.330751, 121.121182],
+    imageSrc: "/2025-07-snow-west-ridge/title.jpg",
+    participants: 2,
+    duration: "40:00",
+    distance: "62 km",
+    ascent: "5069 m",
+    descent: "4735 m",
     date: "June 17 2025",
     level: "Intermediate",
     rating: 4.5,
-    participants: 2,
     banner: "/2025-07-snow-west-ridge/title.jpg",
-    trail: {
-      duration: "40:00",
-      distance: "62 km",
-      ascent: "5069 m",
-      descent: "4735 m",
-    },
     excerpt:
       "過了翠池之後，無窮無盡濕淋淋的箭竹外加無數跟橫跨在路中央的倒木，最終在給一個大雪山的大景當作安慰，最後再給你24公里的林道壓壓驚，這就是雪山西稜。",
     gpxFile: "snow-west-ridge.gpx",

@@ -1,6 +1,5 @@
-import "./globals.css";
+import "@/styles/globals.css";
 import DynamicMap from "@/components/DynamicMap";
-import { trails } from "@/data/trail-markers";
 import { Itinerary } from "@/components/Itinerary";
 import Navbar from "@/components/NavBar";
 
@@ -39,11 +38,7 @@ export default function RootLayout({
 
             {/* 右邊：永遠存在，不會重刷 */}
             <div className="hidden md:block basis-[40%] sticky top-0 h-screen">
-              <DynamicMap
-                center={[24.383401, 121.231754]}
-                zoom={15}
-                markers={trails}
-              />
+              <DynamicMap center={[24.383401, 121.231754]} zoom={15} />
               <Itinerary />
             </div>
           </div>

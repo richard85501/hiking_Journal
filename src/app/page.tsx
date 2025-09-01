@@ -2,7 +2,7 @@
 
 import TrailCard from "@/components/TrailCard";
 import TrailCardMetadata from "@/components/TrailCardMetadata";
-import { trails } from "@/data/trail-markers";
+import { artical_metadata } from "@/data/artical-content";
 import { useFlyToStore } from "@/lib/useFlyToStore";
 import { useGpxStore } from "@/lib/useGpxStore";
 import { useRecordStore } from "@/lib/useRecordStore";
@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <div className="w-full shadow-lg rounded-none mb-5 gap-2 h-auto">
-      {trails.map((trail, index) => (
+      {artical_metadata.map((trail, index) => (
         <TrailCard
           key={index}
           id={trail.id}

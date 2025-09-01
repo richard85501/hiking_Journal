@@ -25,7 +25,7 @@ export default function TrailCard({
   children,
 }: TrailCardProps) {
   return (
-    <div className="w-full shadow-2xl bg-white dark:bg-gray-800 rounded-none mb-5 gap-2">
+    <div className="w-full shadow-xl bg-white dark:bg-gray-800 rounded-none mb-5 gap-2">
       {/* 圖片容器 */}
       <div className="relative w-full aspect-[3/2]">
         <Image src={imageSrc} fill alt={title} style={{ objectFit: "cover" }} />
@@ -56,7 +56,9 @@ export default function TrailCard({
           </div>
           {children}
           {/* Description */}
-          <div className="text-sm text-gray-600 dark:text-gray-400">{description}</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400 ">
+            {description}
+          </div>
         </div>
       </div>
     </div>
