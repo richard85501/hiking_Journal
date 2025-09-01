@@ -1,5 +1,3 @@
-"use Client";
-
 import AspectImageBlock from "./articalBlock/AspectImageBlock";
 import FixedImageBlock from "./articalBlock/FixedImageBlock";
 import ComingSoonBlock from "./articalBlock/ComingSoonBlock";

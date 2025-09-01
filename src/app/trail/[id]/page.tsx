@@ -1,6 +1,6 @@
 import TrailCardMetadata from "@/app/trail/components/ui/TrailCardMetadata";
 import Image from "next/image";
-import Gallery from "./components/features/Gallery";
+import Gallery from "./components/ui/Gallery";
 import { artical_metadata, artical_content } from "@/data/artical-content";
 import type {
   articalMetadataEvent,
@@ -17,8 +17,8 @@ interface PageProps {
   };
 }
 
-export default function Artical({ params }: PageProps) {
-  const { id } = params;
+export default async function Artical({ params }: PageProps) {
+  const { id } = await params;
 
   if (!id) {
     redirect("/");
