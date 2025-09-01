@@ -8,7 +8,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full p-4 relative flex items-center justify-center sticky top-0 z-10">
+    <nav className="w-full p-4 flex items-center justify-center sticky top-0 z-10">
       {pathname !== "/" && (
         <div className="absolute left-4">
           <BackButton />
