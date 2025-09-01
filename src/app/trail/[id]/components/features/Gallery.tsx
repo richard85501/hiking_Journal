@@ -1,8 +1,7 @@
 "use Client";
 
-import AspectImageBlock from "@/components/articalBlock/AspectImageBlock";
-import FixedImageBlock from "@/components/articalBlock/FixedImageBlock";
-import { useFlyToStore } from "@/lib/useFlyToStore";
+import AspectImageBlock from "./articalBlock/AspectImageBlock";
+import FixedImageBlock from "./articalBlock/FixedImageBlock";
 import ComingSoonBlock from "./articalBlock/ComingSoonBlock";
 
 export interface GalleryItem {
@@ -18,14 +17,6 @@ interface GalleryProps {
 }
 
 export default function Gallery({ items }: GalleryProps) {
-  const setFlyTo = useFlyToStore((state) => state.setFlyTo);
-
-  const flyToHandler: (coordinates: [number, number]) => void = (
-    coordinates
-  ) => {
-    setFlyTo(coordinates);
-  };
-
   return (
     <div>
       {items.map((item, index) => {
@@ -37,7 +28,6 @@ export default function Gallery({ items }: GalleryProps) {
               alt={item.alt}
               coordinates={item.coordinates}
               caption={item.caption}
-              flyTo={flyToHandler}
             />
           );
         } else if (item.layout === "fixed") {
@@ -48,7 +38,6 @@ export default function Gallery({ items }: GalleryProps) {
               alt={item.alt}
               coordinates={item.coordinates}
               caption={item.caption}
-              flyTo={flyToHandler}
             />
           );
         } else {

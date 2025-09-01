@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import DynamicMap from "@/components/DynamicMap";
-import { Itinerary } from "@/components/Itinerary";
+import { Itinerary } from "@/app/trail/components/features/Itinerary";
 import Navbar from "@/components/NavBar";
 
 export default function RootLayout({

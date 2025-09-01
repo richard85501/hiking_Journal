@@ -1,54 +1,52 @@
-"use client";
-
-import TrailCard from "@/components/TrailCard";
-import TrailCardMetadata from "@/components/TrailCardMetadata";
+import TrailCardMetadata from "@/app/trail/components/ui/TrailCardMetadata";
 import { artical_metadata } from "@/data/artical-content";
-import { useFlyToStore } from "@/lib/useFlyToStore";
-import { useGpxStore } from "@/lib/useGpxStore";
-import { useRecordStore } from "@/lib/useRecordStore";
-import { useEffect } from "react";
+import StoreInitializer from "./trail/components/features/StoreInitializer";
+import TrailCardContainer from "./trail/components/ui/TrailCard";
+import Image from "next/image";
+import Link from "next/link";
+import { BsFillPeopleFill } from "react-icons/bs";
+import FlyToButton from "@/components/FlyToButton";
 
 export default function Home() {
-  const setFlyTo = useFlyToStore((state) => state.setFlyTo);
-  const setGpx = useGpxStore((state) => state.setGpxList);
-  const setMarkerList = useGpxStore((state) => state.setMarkerList);
-  const setRecord = useRecordStore((state) => state.setRecord);
-
-  const flyToHandler: (coordinates: [number, number]) => void = (
-    coordinates
-  ) => {
-    setFlyTo(coordinates);
-  };
-
-  useEffect(() => {
-    setRecord([]);
-    setGpx([
-      { gpxFile: "snow-day-hike.gpx", gpxColor: "green" },
-      { gpxFile: "snow-west-ridge.gpx", gpxColor: "red" },
-    ]);
-    setMarkerList([]);
-  }, [setGpx, setMarkerList, setRecord]);
-
   return (
-    <div className="w-full shadow-lg rounded-none mb-5 gap-2 h-auto">
+    <TrailCardContainer.MainLayout>
+      <StoreInitializer />
       {artical_metadata.map((trail, index) => (
-        <TrailCard
-          key={index}
-          id={trail.id}
-          imageSrc={trail.imageSrc}
-          title={trail.title}
-          participants={trail.participants}
-          description={trail.description}
-          flyTo={() => flyToHandler(trail.coordinates)}
-        >
-          <TrailCardMetadata
-            duration={trail.duration}
-            distance={trail.distance}
-            ascent={trail.ascent}
-            descent={trail.descent}
-          />
-        </TrailCard>
+        <TrailCardContainer.MainContainer key={index}>
+          <TrailCardContainer.PictureContainer>
+            <Image
+              src={trail.imageSrc}
+              fill
+              alt={trail.title}
+              style={{ objectFit: "cover" }}
+            />
+            <FlyToButton coordinates={trail.coordinates} />
+          </TrailCardContainer.PictureContainer>
+
+          <TrailCardContainer.WordContainer>
+            <TrailCardContainer.TitleContainer>
+              <Link href={`/trail/${trail.id}`}>
+                <TrailCardContainer.TitleStyle>
+                  {trail.title}
+                </TrailCardContainer.TitleStyle>
+              </Link>
+              <TrailCardContainer.RightTitleContainer>
+                <BsFillPeopleFill />
+                <span>{trail.participants}</span>
+              </TrailCardContainer.RightTitleContainer>
+            </TrailCardContainer.TitleContainer>
+            <TrailCardMetadata
+              duration={trail.duration}
+              distance={trail.distance}
+              ascent={trail.ascent}
+              descent={trail.descent}
+            />
+            <TrailCardContainer.DescriptionContainer>
+              {trail.description}
+            </TrailCardContainer.DescriptionContainer>
+          </TrailCardContainer.WordContainer>
+        </TrailCardContainer.MainContainer>
       ))}
-    </div>
+    </TrailCardContainer.MainLayout>
   );
 }
