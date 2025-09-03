@@ -135,7 +135,7 @@ export const artical_metadata: articalMetadataEvent[] = [
   },
   {
     id: 3,
-    coordinates: [24.383401, 121.231754],
+    coordinates: [24.30983013461455, 121.41643132659931],
     description: "從天黑到天黑",
     imageSrc: "/2022-09-central-sharp/title.jpg",
     duration: "60:00",
