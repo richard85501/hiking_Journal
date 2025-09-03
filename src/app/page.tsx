@@ -10,7 +10,7 @@ import FlyToButton from "@/components/FlyToButton";
 export default function Home() {
   return (
     <TrailCardContainer.MainLayout>
-      <StoreInitializer />
+      <StoreInitializer artical_metadata={artical_metadata} />
       {artical_metadata.map((trail, index) => (
         <TrailCardContainer.MainContainer key={index}>
           <TrailCardContainer.PictureContainer>

@@ -133,6 +133,35 @@ export const artical_metadata: articalMetadataEvent[] = [
       "09:00 結束遊戲",
     ],
   },
+  {
+    id: 3,
+    coordinates: [24.383401, 121.231754],
+    description: "從天黑到天黑",
+    imageSrc: "/2022-09-central-sharp/title.jpg",
+    duration: "60:00",
+    distance: "38 km",
+    ascent: "4272 m",
+    descent: "4258 m",
+    title: "【中央尖山】遙不可及的夢想",
+    date: "Nov 08 2022",
+    level: "Intermediate",
+    rating: 3,
+    participants: 4,
+    banner: "/2022-09-central-sharp/title.jpg",
+    excerpt: "早黑摸到晚黑 , 台灣的峽谷地形讓人崩潰",
+    gpxFile: "central-sharp.gpx",
+    gpxColor: "yellow",
+    record: [
+      "2:30 登山口",
+      "3:13 七卡",
+      "05:02 雪東",
+      "05:55 三六九營地",
+      "09:30 雪山主峰",
+      "10:30 三六九營地",
+      "11:37 雪山東峰",
+      "13:05 登山口",
+    ],
+  },
 ];
 
 export const artical_content: articalContentEvent[] = [
@@ -311,5 +340,9 @@ export const artical_content: articalContentEvent[] = [
         location: "雪山登山口",
       },
     ],
+  },
+  {
+    id: 3,
+    content: [],
   },
 ];
